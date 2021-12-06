@@ -52,7 +52,7 @@ class Poster(Document):
     class Meta:
         collection_name = COLLECTION_NAME_2
 
-async def save_poster(imdb_id, title, year, url):
+async def save_poster(imdb_id, title, year, url, imdb_rating, genre):
     try:
         data = Poster(
             imdb_id=imdb_id,
