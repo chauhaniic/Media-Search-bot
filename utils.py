@@ -218,6 +218,8 @@ async def get_poster(movie):
                 y = a.get("Search")[0]
                 v=y.get("Title").lower().strip()
                 poster = y.get("Poster")
+                #Poster Size Update
+                poster = re.sub('@._V1_SX300.jpg','@.jpg',poster)
                 year=y.get("Year")[:4]
                 id=y.get("imdbID")
                 ''' For Getting Complete Details '''
