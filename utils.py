@@ -197,7 +197,7 @@ async def get_poster(movie):
     cursor = Poster.find(filter)
     is_in_db = await cursor.to_list(length=1)
     poster=None
-    v=None
+    v="N/A"
     imdb_rating=None
     genre=None
     if is_in_db:
