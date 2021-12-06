@@ -82,7 +82,7 @@ async def filter(client, message):
             genre="N/A"
             title=None
             if API_KEY:
-                poster=await get_poster(search)
+                poster,imdbRating,genre,title=await get_poster(search)
             if poster:
                 await message.reply_photo(photo=poster, caption=f"<b>❔Query: {search}\n🗂️ Title:</b> {title} \n<b>⭐ Rating: {imdbRating}\n🎭 Genre:</b>{genre}", reply_markup=InlineKeyboardMarkup(buttons))
 
@@ -104,7 +104,7 @@ async def filter(client, message):
         genre="N/A"
         title=None
         if API_KEY:
-            poster=await get_poster(search)
+            poster,imdbRating,genre,title=await get_poster(search)
         if poster:
             await message.reply_photo(photo=poster, caption=f"<b>❔Query: {search}\n🗂️ Title:</b> {title} \n<b>⭐ Rating: {imdbRating}\n🎭 Genre:</b>{genre}", reply_markup=InlineKeyboardMarkup(buttons))
         else:
@@ -152,7 +152,7 @@ async def group(client, message):
             genre="N/A"
             title=None
             if API_KEY:
-                poster=await get_poster(search)
+                poster,imdbRating,genre,title=await get_poster(search)
             if poster:
                 await message.reply_photo(photo=poster, caption=f"<b>❔Query: {search}\n🗂️ Title:</b> {title} \n<b>⭐ Rating: {imdbRating}\n🎭 Genre:</b>{genre}", reply_markup=InlineKeyboardMarkup(buttons))
             else:
@@ -173,7 +173,7 @@ async def group(client, message):
         genre="N/A"
         title=None
         if API_KEY:
-            poster=await get_poster(search)
+            poster,imdbRating,genre,title=await get_poster(search)
         if poster:
             await message.reply_photo(photo=poster, caption=f"<b>❔Query: {search}\n🗂️ Title:</b> {title} \n<b>⭐ Rating: {imdbRating}\n🎭 Genre:</b>{genre}", reply_markup=InlineKeyboardMarkup(buttons))
         else:
