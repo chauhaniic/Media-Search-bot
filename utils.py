@@ -46,6 +46,8 @@ class Poster(Document):
     title = fields.StrField()
     poster = fields.StrField()
     year= fields.IntField(allow_none=True)
+    imdb_rating = fields.StrField(allow_none=True)
+    genre = fields.StrField(allow_none=True)
 
     class Meta:
         collection_name = COLLECTION_NAME_2
@@ -56,7 +58,9 @@ async def save_poster(imdb_id, title, year, url):
             imdb_id=imdb_id,
             title=title,
             year=int(year),
-            poster=url
+            poster=url,
+            imdb_rating=imdb_rating,
+            genre=genre
         )
     except ValidationError:
         logger.exception('Error occurred while saving poster in database')
@@ -193,9 +197,15 @@ async def get_poster(movie):
     cursor = Poster.find(filter)
     is_in_db = await cursor.to_list(length=1)
     poster=None
+    v=None
+    imdb_rating=None
+    genre=None
     if is_in_db:
         for nyav in is_in_db:
             poster=nyav.poster
+            v=nyav.title
+            imdb_rating=nyav.imdb_rating
+            genre=nyav.genre
     else:
         if year:
             url=f'https://www.omdbapi.com/?s={title}&y={year}&apikey={API_KEY}'
@@ -210,11 +220,18 @@ async def get_poster(movie):
                 poster = y.get("Poster")
                 year=y.get("Year")[:4]
                 id=y.get("imdbID")
-                await get_all(a.get("Search"))
+                ''' For Getting Complete Details '''
+                url1=f'https://www.omdbapi.com/?i={id}&apikey={API_KEY}'
+                n1 = requests.get(url1)
+                a1 = json.loads(n1.text)
+                imdb_rating=a1.get("imdbRating")
+                genre=a1.get("Genre")
+                await save_poster(id, v, year, poster, imdb_rating, genre)
+                #await get_all(a.get("Search"))
         except Exception as e:
             logger.exception(e)
             pass
-    return poster
+    return poster, imdb_rating, genre, v.title()
 
 
 async def get_all(list):
