@@ -284,7 +284,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "about":
             buttons = [
                 [
-                    InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml'),
+                    InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml2'),
                     InlineKeyboardButton('Source Code', url='https://github.com/chauhaniic/Media-Search-bot')
                 ]
                 ]
@@ -309,8 +309,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('Collection', url='https://t.me/adam_sandlerss'),
-                        InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml')
+                        InlineKeyboardButton('Collection', url='https://t.me/fmlcollection'),
+                        InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml2')
                     ]
                     ]
                 
@@ -341,8 +341,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{title}"
                 buttons = [
                     [
-                        InlineKeyboardButton('Collection', url='https://t.me/adam_sandlerss'),
-                        InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml')
+                        InlineKeyboardButton('Collection', url='https://t.me/fmlcollection'),
+                        InlineKeyboardButton('Update Channel', url='https://t.me/favoriteml2')
                     ]
                     ]
                 
